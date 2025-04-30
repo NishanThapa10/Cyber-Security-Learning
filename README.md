@@ -62,3 +62,14 @@ Cyber Security Learning
 
 # Module 3 - Protecting your data and privacy
 
+## 1. Protecting your computer devices
+
+- Turn the firewall on
+- Install antivirus
+- Manage your operating browser
+- Setup password protection 
+
+## 2. Wireless Network Security at home
+## 3. Public Wi-Fi Risks
+## 4. Password Security 
+## 5. Using a passpharse 
