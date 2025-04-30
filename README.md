@@ -2,7 +2,7 @@
 Cyber Security Learning
 
 
-# Cybersecurity Notes – Week 1 (Module 1: Introduction to Cybersecurity)
+# Module 1: Introduction to Cybersecurity
 
 ## 1. World of Cybersecurity
 - Cybersecurity is the practice of defending systems, networks, and programs from digital attacks.
@@ -25,7 +25,7 @@ Cyber Security Learning
 - It can target critical infrastructure like power grids, financial institutions, and government services.
 
 
-## Module 2 - Attack , Concepts and Techniques
+# Module 2 - Attack , Concepts and Techniques
 
 ## 1 Analyzing a cyber attack 
 - Types of malware - Spyware, Adware, Backdoor, Ransomware, Scareware, Rootkit, Virus, Trojan horse, Worms
@@ -58,3 +58,7 @@ Cyber Security Learning
 ## 4 The cybersecurity landscape 
 -  Cryptocurrency
 -  Cryptojacking 
+
+
+# Module 3 - Protecting your data and privacy
+
