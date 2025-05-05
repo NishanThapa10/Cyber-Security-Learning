@@ -73,3 +73,29 @@ Cyber Security Learning
 ## 3. Public Wi-Fi Risks
 ## 4. Password Security 
 ## 5. Using a passpharse 
+
+## 3.2 Data Maintenance
+
+- Encription - Encryption is the process of converting information into a form in which unauthorized parties cannot read it. Only a trusted, authorized person with the secret key or password can decrypt the data and access it in its original form. Encryption is the process of converting readable data (plaintext) into an unreadable format (ciphertext) to protect its confidentiality and integrity.
+- Back up data  
+
+## 3.3 Who owns your data? 
+- Terms of Services - Understand the terms (Data use policy, Privacy Settings, Security Policy)
+
+## 3.4 Safeguarding your online privacy
+ - Two factor authentication, Open authorization
+
+# Module 4 Protecting the Organization
+
+## 4.1 CyberSecurity Devices and Appliances
+
+- Routers, Firewall, IPS, VPN, Antivirus, Other Security Devices
+
+## Types of Firewalls
+- Network layer Firewall, Transport Layer Firewall, Application layer firewall, Context aware layer firewall, Proxy server, NAT, Host-based firewall 
+
+# Penetration Testing 
+- Penetration testing, commonly known as pen testing, is the act of assessing a computer system, network or organization for security vulnerabilities. A pen test seeks to breach systems, people, processes and code to uncover vulnerabilities which could be exploited. This information is then used to improve the system’s defenses to ensure that it is better able to withstand cyber attacks in the future.
+
+# Risk Management 
+- Cybersecurity risk management is a structured process of identifying, assessing, and mitigating potential threats to digital assets and systems. It involves implementing strategies and measures to protect against cyberattacks and minimize the impact of potential breaches.
