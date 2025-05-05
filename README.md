@@ -99,3 +99,12 @@ Cyber Security Learning
 
 # Risk Management 
 - Cybersecurity risk management is a structured process of identifying, assessing, and mitigating potential threats to digital assets and systems. It involves implementing strategies and measures to protect against cyberattacks and minimize the impact of potential breaches.
+
+### 📜 Certifications
+
+#### 1. Introduction to Cybersecurity Course by Cisco
+- [Download Certificate 1](./certificates/I2CSUpdate20250505-26-byluo.pdf)
+- [Download Certificate 2](./certificates/_certificate_nishan27thapa-gmail-com_b6c73c63-9962-466c-9507-8d9244cae7b2.pdf)
+
+#### Badge
+![Cisco Badge](./certificates/introduction-to-cybersecurity.png)
