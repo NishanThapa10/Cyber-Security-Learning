@@ -66,3 +66,30 @@ CDU.BANK (Domain Root)
 └── 📁 IT (Organizational Unit)
     ├── 👥 Service Desk (Security Group)   ──> 👤 Jane Smith (jsmith)
     └── 👥 Field Staff (Security Group)    ──> 👤 Joe Bloggs (jbloggs)
+
+## Week 4: AD FS Deployment & OAuth / OpenID SSO Setup
+Objectives
+Create a dedicated service account (adfs-service) with a non-expiring password.
+
+Deploy and configure Active Directory Federation Services (AD FS).
+
+Configure an Application Group using OAuth 2.0 / OpenID Connect.
+
+Validate federated claims using the external Claims X-Ray suite and marking-script-2.ps1.
+
+Key Implementation Steps
+Service Account Setup: Created user adfs-service in AD Administrative Center, set the password to YourSecurePassword123!, and checked Password Never Expires.
+
+AD FS Installation: Executed automated script adfs-setup.ps1 to install AD FS binaries and generate local SSL certificates (sts.cdu.bank).
+
+AD FS Configuration: Configured the AD FS Server role, bound it to the CDU\Administrator domain credentials, and named the service CDU Bank ADFS.
+
+OAuth Application Setup: * Opened AD FS Management and added a new Application Group named Claims Xray (type: Web Browser Accessing a Web Application).
+
+Configured Redirect URI to https://claimsxray.com/token.
+
+Applied Access Control Policy set to Permit Everyone.
+
+Token Handshake Test: Opened https://claimsxray.com inside the Server VM, selected OpenID, initiated the login process, and successfully authenticated against AD FS to receive federated claims.
+
+Automated Audit: Executed marking-script-2.ps1 to confirm successful federated token issuance.
