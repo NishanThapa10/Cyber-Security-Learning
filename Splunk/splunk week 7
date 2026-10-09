@@ -1,0 +1,58 @@
+
+📋 Project Overview
+
+Building directly on my foundational work from Week 6 (where I ingested raw web logs and mastered basic search pipelines), Week 7 focused on turning raw log noise into actionable security and business intelligence.
+In an enterprise environment, raw logs are often cryptic. For example, a web log might show a user interaction with a vague ID string like DB-SG-G01. As a Security Operations (SecOps) or Identity & Access Management (IAM) analyst, I need to enrich that data with external context to make real-time decisions. This lab focuses on Data Enrichment via Search-Time Lookups, constructing complex analytics via Transforming Commands, and building interactive Operational Dashboards using input tokens.
+
+🧠 Core Concepts Mastered
+
+
+1. Data Enrichment via Lookups (Search-Time Field Extractions)
+
+• Concept: Rather than permanently altering raw log data at index-time (which wastes database storage and processing power), I configured an external, static database reference table (prices.csv) to enrich events dynamically at search-time.
+• Implementation: I built a Lookup Table File and configured a global Lookup Definition (prices_lookup). To optimize workflows, I automated the pipeline by building an Automatic Lookup mapped directly to the access_combined_wcookie sourcetype.
+• The Key-Value Connection: I mapped the common key productId = productId across the datasets. This allowed Splunk to automatically ingest columns from the CSV and extract two brand new, custom fields on the fly: productName (human-readable game titles) and price.
+
+2. Advanced Analytics via Transforming Commands (stats vs. chart vs. timechart)
+
+• stats vs. chart: I mastered when to deploy specific transforming commands. While chart is strictly optimized for building multi-dimensional visualization matrix grids, stats outputs flat tabular data, allowing me to pass columns seamlessly down an active pipeline to evaluate equations using the eval command.
+• Conditional Counting: I wrote dense SPL strings embedding conditional evaluation parameters inside statistical count functions, such as counting specific rows only if they matched a critical flag: count(eval(action="purchase")).
+• Distinct Counting (dc): I leveraged the dc() function to track unique identifier profiles. For exam context and operational accuracy, I proved that while a standard count tallies every chronological row entry, a distinct count (dc) strips out duplicate items to track unique variable blocks.
+• Deduplication via values(): I used values(field) as an automated deduplicator to generate clean, alphabetically sorted unique entries within a table cell without duplicating data lines.
+
+3. Enterprise Visualizations & Dashboard Architecture
+
+• Dual Y-Axis Configuration (Chart Overlays): I built advanced analytical charts that plot raw activity counts (Views, Cart Additions, Final Purchases) as vertical Columns against a primary vertical axis, while simultaneously overlaying custom mathematical percentages (Conversion Rates) as horizontal trend Lines against a second, independent Y-axis on the right.
+• Dynamic UI Controls & Input Tokens: I deployed an independent Time Range Picker UI element to filter dashboard panels dynamically. I designed this by replacing standard default strings with a unique user-defined Input Token Variable (BG_Purchases_Time_Range). By linking the hidden search strings of my ad-hoc panels directly to this token, I ensured the entire system dynamically flushes and refreshes its query cache in unison whenever a user modifies the top-level picker interface.
+
+💻 Key SPL Queries Developed & Analyzed
+
+
+Query 1: The Multi-Axis Conversion Overlay
+
+splunk
+sourcetype=access_* status=200 
+| stats count AS views count(eval(action="addtocart")) AS addtocart count(eval(action="purchase")) AS purchases by productName 
+| eval viewsToPurchases=(purchases/views)*100 
+| eval cartToPurchases=(purchases/addtocart)*100 
+| table productName views addtocart purchases viewsToPurchases cartToPurchases 
+| rename productName AS "Product Name", views AS "Views", addtocart as "Adds To Cart", purchases AS "Purchases"
+Use code with caution.
+• Why it's powerful: It extracts raw counts using stats, feeds those numbers directly into eval blocks to execute algebra on the fly to get percentages, organizes the output with a strict table schema, and isolates specific fields for the backend Chart Overlay visualizer to track.
+
+Query 2: Subsearch Isolation & Distinct Verification
+
+splunk
+sourcetype=access_* status=200 action=purchase 
+    [ search sourcetype=access_* status=200 action=purchase 
+    | top limit=1 clientip 
+    | table clientip ] 
+| stats count AS "Total Purchased", dc(productId) AS "Total Products", values(productName) AS "Product Names" BY clientip 
+| rename clientip AS "VIP Customer"
+Use code with caution.
+• Why it's powerful: This mimics real-world threat hunting. The bracketed subsearch [...] executes first, isolating the single top transactional IP address from millions of entries, and returns it to the outer search. The outer search then aggregates only that user's logs, calculating their total transactions (count), unique items touched (dc), and listing every game title they bought cleanly via values().
+
+🛡️ SecOps & IAM Professional Takeaways
+
+• Search-Time Field Extraction: This lab reinforced how critical lookups are for a modern Security Operations Centre (SOC). Instead of cluttering active indexes with repetitive text strings, analysts can look up technical asset logs (like an internal IP address or asset ID) against an external spreadsheet to instantly reveal context (e.g., "This IP belongs to the HR Manager's Laptop" or "This ID belongs to John Doe").
+• Syntax & Architecture Rigor: I navigated real-world environment traps, such as Splunk's strict case-sensitivity rules (e.g., matching a raw productId vs a lowercase productid), function layout spacing requirements, and troubleshooting timestamp alignment mismatches between historical sample logs and active system clocks.
