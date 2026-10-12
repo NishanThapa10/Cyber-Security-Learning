@@ -1,8 +1,8 @@
 # Blue Team Threat Hunting: Incident Response Lifecycle using Splunk (BOTS v1)
 
-## 👤 Author Profile
-- **Degree:** Master of Information Technology (Cybersecurity)
-- **Unit Focus:** Identity Access Management (IAM) and Security Operations (SecOps)
+
+
+
 - **Lab Framework:** Lockheed Martin Cyber Kill Chain Mapping
 - **Target Threat Actor Group:** PO1S0N1VY
 
@@ -24,7 +24,7 @@ To establish comprehensive network visibility, I deployed and utilized several S
 
 ---
 
-## 🕵️‍♂️ Investigation Breakdown & Splunk Search Queries
+##  Investigation Breakdown & Splunk Search Queries
 
 ### Phase 1: Reconnaissance (Information Gathering)
 * **Objective:** Identify unauthorized network scanning activity targeting corporate web infrastructure.
@@ -85,7 +85,7 @@ Pivoting to host-based kernel security events, I targeted **EventCode=1 (Process
 
 ---
 
-## 🎓 Master's Level Core Technical Competencies Learned
+## Technical Competencies Learned
 1. **SIEM Optimization Best Practice:** Learned that filtering searches via `index=` and strict `sourcetype` boundaries is a required operational strategy to minimize index cluster workload and eliminate alert fatigue.
 2. **Wire Data vs. Log Data Reliability:** Understood that while host logs can be corrupted or deleted during a server compromise, passive network wire captures (`stream:http`/`stream:dns`) remain unalterable, proving indispensable for forensic verification.
 3. **Adversary Infrastructure Decoupling:** Learned to identify sophisticated threat patterns where actors separate automated high-volume scan blocks from quieter, targeted manual deployment boxes to trick signature-based firewalls.
