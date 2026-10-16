@@ -231,6 +231,9 @@ Logs were forwarded to Splunk under the index `pinnacle`. Telemetry sources incl
 ### Q23: What is the IP address of the C2 server?
 * **SPL Query Used:**
   ```spl
+  index=pinnacle sourcetype="xmlwineventlog" "svchost-update.exe" EventCode=3 | stats count by DestinationIp
+  * **Answer:** `192.0.2.150`
+  ```
 ### Q24: What destination port did the C2 channel use?
 * **SPL Query Used:**
   ```spl
